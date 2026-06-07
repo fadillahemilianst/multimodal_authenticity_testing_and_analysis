@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MATA — Multimodal Authenticity Testing and Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <span class="logo-text">MATA</span>
+    </div>
+    <p class="tagline">Multimodal Authenticity Testing and Analysis</p>
+  </header>
+
+  <main>
+    <!-- Upload Panel -->
+    <section class="upload-panel" id="uploadPanel">
+      <div class="panel-header">
+        <span class="panel-label">Upload Video</span>
+        <span class="status-dot" id="statusDot"></span>
+      </div>
+
+      <div class="drop-zone" id="dropZone">
+        <div class="drop-content">
+          <div class="drop-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="16" width="48" height="32" rx="4" stroke="currentColor" stroke-width="1.5"/>
+              <polygon points="26,24 44,32 26,40" fill="currentColor" opacity="0.5"/>
+              <line x1="32" y1="52" x2="32" y2="60" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="20" y1="60" x2="44" y2="60" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="drop-title">Drop your video here</p>
+          <p class="drop-sub">or click to browse — MP4, AVI, MOV, MKV, WEBM, FLV</p>
+          <p class="drop-limit">Maximum file size: 500 MB</p>
+        </div>
+      </div>
+      <input type="file" id="videoInput" accept=".mp4,.avi,.mov,.mkv,.webm,.flv" hidden />
+
+      <!-- File preview -->
+      <div class="file-preview" id="filePreview" style="display:none;">
+        <div class="file-icon">🎬</div>
+        <div class="file-info">
+          <span class="file-name" id="fileName"></span>
+          <span class="file-size" id="fileSize"></span>
+        </div>
+        <button class="btn-clear" id="btnClear" title="Remove file">✕</button>
+      </div>
+
+      <button class="btn-analyze" id="btnAnalyze" disabled>
+        <span class="btn-text">Analyze Video</span>
+      </button>
+    </section>
+
+    <!-- Progress Panel -->
+    <section class="progress-panel" id="progressPanel" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-label">Analyzing</span>
+        <span class="panel-id" id="progressId"></span>
+      </div>
+      <div class="progress-steps" id="progressSteps">
+        <div class="step" data-step="0"><span class="step-dot"></span><span class="step-label">Uploading video file...</span></div>
+        <div class="step" data-step="5"><span class="step-dot"></span><span class="step-label">Generating forensic report...</span></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </section>
+
+    <!-- Result Panel -->
+    <section class="result-panel" id="resultPanel" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-label">Forensic Report</span>
+        <button class="btn-reset" id="btnReset">↺ Analyze Another</button>
+      </div>
+
+      <div class="verdict-banner" id="verdictBanner">
+        <div class="verdict-left">
+          <div class="verdict-icon" id="verdictIcon"></div>
+          <div class="verdict-text">
+            <div class="verdict-label">VERDICT</div>
+            <div class="verdict-value" id="verdictValue"></div>
+            <div class="verdict-confidence" id="verdictConfidence"></div>
+          </div>
+        </div>
+        <div class="verdict-score-wrap">
+          <svg class="score-ring" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ring-fill" id="scoreRing" cx="60" cy="60" r="54"
+                    stroke-dasharray="339" stroke-dashoffset="339"/>
+          </svg>
+          <div class="score-label">
+            <span class="score-num" id="scoreNum">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-grid" id="metaGrid"></div>
+
+      <div class="checks-title">Detection Modules</div>
+      <div class="checks-grid" id="checksGrid"></div>
+
+      <div class="issues-panel" id="issuesPanel">
+        <div class="issues-title" id="issuesTitle">⚠ Anomalies Detected</div>
+        <ul class="issues-list" id="issuesList"></ul>
+      </div>
+    </section>
+
+    <!-- Error Toast -->
+    <div class="error-toast" id="errorToast" style="display:none;">
+      <span class="error-icon">✕</span>
+      <span id="errorMsg"></span>
+    </div>
+  </main>
+
+  <footer>
+    <span>VeriFrame Forensic Engine</span>
+    <span class="sep">·</span>
+    <span>OpenCV · NumPy · Flask</span>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /**
- * VERIFRAME — Video Authenticity Detector
+ * MATA - Multimodal Authenticity Testing and Analysis
  * jQuery frontend logic
  */
 

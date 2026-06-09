@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg:        #faf8f5;
-  --bg2:       #ffffff;
+  --bg:        #f2ede7;
+  --bg2:       #fdfcfa;
   --bg3:       #f5f1ec;
   --bg4:       #ede8e0;
   --border:    rgba(180, 148, 130, 0.2);
-  --border2:   rgba(180, 148, 130, 0.45);
+  --border2:   rgba(180, 148, 130, 0.65);
   --accent:    #c47d6a;
   --accent2:   #e8a898;
   --accent3:   #f0d4cc;
@@ -20,16 +20,16 @@
   --danger-light:#f5d0d0;
   --ok:        #5a9a7a;
   --ok-light:  #c8e8d8;
-  --text:      #3d2e28;
+  --text:      #34251f;
   --text-mid:  #7a6058;
-  --text-dim:  #b09888;
-  --text-light:#d4c4bc;
+  --text-dim:  #8c7468;
+  --text-light:#b39d91;
   --serif:     'DM Serif Display', serif;
   --sans:      'DM Sans', sans-serif;
   --mono:      'DM Mono', monospace;
   --radius:    16px;
   --radius-sm: 8px;
-  --shadow:    0 4px 24px rgba(100, 60, 40, 0.08);
+  --shadow:    0 8px 30px rgba(100, 60, 40, 0.10);
   --shadow-lg: 0 12px 48px rgba(100, 60, 40, 0.12);
 }
 

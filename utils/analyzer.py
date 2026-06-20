@@ -147,9 +147,6 @@ class VideoAuthenticityAnalyzer:
 
         total_score = round(total_score, 1)
 
-        # Determine verdict
-        warnings = sum(1 for k, v in checks.items() if v.get('status') == 'warning')
-
         if total_score >= 80:
             verdict = 'AUTHENTIC'
             confidence = 'HIGH' if total_score >= 90 else 'MEDIUM'
